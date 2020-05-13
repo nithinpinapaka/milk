@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/style.css">
+    <title>Dairy Farm</title>
+</head>
+
+<body>
+    <a href="/"><img id="logo" src="images/logo.jpg" alt="Logo"></a>
+    <h1 id="header">Dairy Farm</h1>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/add">Add Customers</a></li>
+        <li><a href="/update">Update Customers</a></li>
+        <li><a href="/all" class="active">Show All Customers</a></li>
+        <li><a href="/delete">Delete Customers</a></li>
+
+    </ul>
+
+    <!-- from here all customers html will start-->
+
+    <h1 id="addheading">All Cutomers Data</h1>
+
+    <hr>
+    <table id="allCustomerData">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Mobile </th>
+            <th>Amount</th>
+        </tr>
+
+        <!-- Data fetching from (mongoDB -> node.js -> ejs)-->
+
+        <% data.forEach(function(element) { %>
+
+        <tr>
+            <td><%= element._id%></td>
+            <td><%= element.name%></td>
+            <td><%= element.mobile%></td>
+            <td><%= element.amount%></td>
+
+
+        </tr>
+        <% }) %>
+    </table>
+
+
+</body>
+
+</html>

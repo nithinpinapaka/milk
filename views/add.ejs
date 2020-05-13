@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/style.css">
+    <title>Dairy Farm</title>
+
+    <script>
+        function validateForm() {
+            var x = document.forms["validate"]["addname"].value;
+            var y = document.forms["validate"]["addmobile"].value;
+            var z = document.forms["validate"]["addamount"].value;
+
+            if (x == "") {
+                alert("please enter a valid name");
+                return false;
+            }
+            if (y == "") {
+
+                alert("please enter a valid mobile number");
+                return false;
+            }
+
+            if (z == "") {
+                alert("please enter a valid amount");
+                return false;
+            }
+        
+
+        }
+    </script>
+
+</head>
+
+<body>
+    <a href="/"><img id="logo" src="images/logo.JPG" alt="Logo"></a>
+    <h1 id="header">Dairy Farm</h1>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/add" class="active">Add Customers</a></li>
+        <li><a href="/update">Update Customers</a></li>
+        <li><a href="/all">Show All Customers</a></li>
+        <li><a href="/delete">Delete Customers</a></li>
+
+    </ul>
+
+    <!-- from here add html will start-->
+    <h1 id="addheading">Add Cutomers</h1>
+
+    <% if(response!=''){%>
+    <h3 id="responseheading"><%= response%></h3>
+    <% }%>
+
+    <form id="addform" name="validate" onsubmit="return validateForm()" action="/addcustomers" method="POST">
+        <table id="addtableform">
+            <tr>
+                <td><label for="">Name:</label></td>
+                <td><input type="text" name="addname" autofocus></td>
+            </tr>
+            <tr>
+                <td><label for="">Mobile:</label></td>
+                <td><input type="number" name="addmobile"  pattern="\d{3}[\-]\d{3}[\-]\d{4}"></td>
+            </tr>
+            <tr>
+                <td><label for="">Amount:</label></td>
+                <td><input type="number" name="addamount"></td>
+                
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <input type="submit" value="Add Customer" name="submit" class="addtablesubmit">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+
+</body>
+
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script>
+    function validateForm() {
+      var x = document.forms["validate"]["searchname"].value;
+      if (x == "") {
+        alert("please enter valid name to search");
+        return false;
+      }
+    }
+    function validateForm1() {
+      console.log("inside validateform1");
+      var tableData = document.getElementById("allCustomerData");
+      //console.log(tableData);
+      var rows = tableData.rows.length;
+      //console.log(rows);
+      for (var i = 1; i <= rows; i++) {
+        //console.log(tableData.rows[i]);
+        var cell = tableData.rows[i].cells;
+        //console.log(cell[1]);
+        //console.log(cell[3]);
+        console.log("amount value: ", cell[3].getElementsByTagName("input")[0].value);
+        console.log("name value: ", cell[1].getElementsByTagName("input")[0].value);
+        var eachRowName = cell[1].getElementsByTagName("input")[0].value
+        var eachRowAmount = cell[3].getElementsByTagName("input")[0].value
+
+        if (eachRowName == "") {
+          alert("please enter a valid name");
+          return false;
+        }
+        if (eachRowAmount == "") {
+          alert("please enter a valid amount");
+          return false;
+        }
+      }
+
+    }
+
+    $('input.searchsubmit').click(function () {
+      $('form.searchform').submit();
+    });
+    $('input.updatesubmit').click(function () {
+      $('form.updateform').submit();
+    });
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="CSS/style.css">
+  <title>Dairy Farm</title>
+</head>
+
+<body>
+  <a href="/"><img id="logo" src="images/logo.jpg" alt="Logo"></a>
+  <h1 id="header">Dairy Farm</h1>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/add">Add Customers</a></li>
+    <li><a href="/update" class="active">Update Customers</a></li>
+    <li><a href="/all">Show All Customers</a></li>
+    <li><a href="/delete">Delete Customers</a></li>
+
+  </ul>
+
+  <!-- from here update html will start-->
+  <h1 id="addheading">Update Cutomers</h1>
+  <hr>
+
+  <% if(response!=''){%>
+  <h3 id="responseheading"><%= response%></h3>
+  <% }%>
+
+  <form action="/update" name="validate" onsubmit="return validateForm()" method="POST">
+    <table style="margin-left:auto;margin-right:auto;">
+
+      <td><input type="text" name="searchname" placeholder="Search by Name" autofocus></td>
+      <td><input type="submit" class="searchsubmit" value="Search"> </td>
+    </table>
+  </form>
+  <hr>
+  <table id="allCustomerData">
+    <tr>
+
+      <th>ID</th>
+      <th>Name</th>
+      <th>Mobile </th>
+      <th>Amount</th>
+      <th>Delete</th>
+    </tr>
+
+    <!--Data fetching from (mongoDB -> node.js -> ejs)-->
+
+    <% data.forEach(function(element) { %>
+
+    <tr>
+
+      <form action="/update1" name="validate1" onsubmit="return validateForm1()" method="POST" class="searchform">
+        <td><%= element._id%></td>
+        <td><input type="text" name="updatename" value="<%= element.name%>"></td>
+        <td><%= element.mobile%></td>
+        <td><input type="text" name="updateamount" value="<%= element.amount%>"></td>
+        <input type="hidden" value="<%= element.mobile%>" name="mobile">
+
+        <td><input type="submit" value="Update" class="updatesubmit"></td>
+
+      </form>
+    </tr>
+
+    <% }) %>
+  </table>
+</body>
+
+</html>

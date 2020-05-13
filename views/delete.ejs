@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/style.css">
+    <title>Dairy Farm</title>
+</head>
+<script>
+
+    function validateForm() {
+        var x = document.forms["validate"]["searchname"].value;
+        if (x == "") {
+            alert("please enter valid name to search");
+            return false;
+        }
+           
+    }
+
+    $('input.searchsubmit').click(function () {
+        $('form.searchform').submit();
+    });
+    $('input.deletesubmit').click(function () {
+        $('form.deleteform').submit();
+    });
+</script>
+
+<body>
+    <a href="/"><img id="logo" src="images/logo.jpg" alt="Logo"></a>
+    <h1 id="header">Dairy Farm</h1>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/add">Add Customers</a></li>
+        <li><a href="/update">Update Customers</a></li>
+        <li><a href="/all">Show All Customers</a></li>
+        <li><a href="/delete" class="active">Delete Customers</a></li>
+
+    </ul>
+
+    <!-- from here delete html will start-->
+    <h1 id="addheading">Delete Cutomers</h1>
+    <hr>
+    <% if(response!=''){%>
+    <h3 id="responseheading"><%= response%></h3>
+    <% }%>
+    <form action="/delete" name="validate" onsubmit="return validateForm()" method="POST" class="searchform">
+        <table style="margin-left:auto;margin-right:auto;">
+
+            <td><input type="text" name="searchname" placeholder="Search by Name" autofocus></td>
+            <td><input type="submit" value="Search" class="searchsubmit"> </td>
+        </table>
+    </form>
+    <hr>
+    <table id="allCustomerData">
+        <tr>
+
+            <th>ID</th>
+            <th>Name</th>
+            <th>Mobile </th>
+            <th>Amount</th>
+            <th>Delete</th>
+        </tr>
+
+        <!--Data fetching from (mongoDB -> node.js -> ejs)-->
+
+        <% data.forEach(function(element) { %>
+
+        <tr>
+            <form action="/delete1" method="POST" class="searchform">
+                <td><%= element._id%></td>
+                <td><%= element.name%></td>
+                <td><%= element.mobile%></td>
+                <input type="hidden" value="<%= element.mobile%>" name="deletefile">
+                <td><%= element.amount%></td>
+                <td><input type="submit" value="Delete" class=" deletesubmit"></td>
+
+            </form>
+        </tr>
+
+        <% }) %>
+    </table>
+</body>
+
+</html>

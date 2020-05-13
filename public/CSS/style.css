@@ -1,0 +1,139 @@
+#logo
+{ 
+   display: inline;
+   position:absolute;
+    top: 0;
+    width: 20%;
+}
+#header{
+    color: rgb(255, 255, 255);
+    text-align: center;
+    left: 90px;
+    padding: 4px;
+    background-image: linear-gradient(to left, rgba(255,0,0,0.6), rgb(248, 136, 9));
+   
+} 
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: sticky;
+    border: 1px solid #e7e7e7;
+    background-color: rgba(0, 0, 0, 0.603);
+}
+li{
+   float: left;
+
+}
+li a{
+    display: block;
+    color:rgb(233, 233, 233);
+    text-decoration: none;
+    text-align: center;
+    padding: 20px;
+
+}
+li a:hover:not(.active){
+    background-color:rgb(88, 85, 82);
+}
+li a.active{
+    background-color: lightsalmon;
+    color: black;
+}
+#addform{
+    margin: 20px;
+    padding: 5px;
+}
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+#addtableform{
+    margin-right: auto;
+    font-size: 20px;
+    border-spacing: 30px;
+    margin-left: auto;
+    padding: 2px;
+
+}
+#addheading{
+    text-align: center;
+    color: rgba(65, 7, 7, 0.986)
+}
+.addtablesubmit{
+    
+    width:250px;
+    height:45px;
+    border:none;
+    outline:none;
+    box-shadow:-4px 4px 5px 0 #73fe61;
+    color:#fff;
+    font-size:14px;
+    text-shadow:0 1px rgba(0,0,0,0.4);
+    background-color:rgb(46, 254, 46);
+    border-radius:3px;
+    font-weight:700
+    }
+    .addtablesubmit:hover{
+    background-color:rgb(21, 255, 0);
+    cursor:pointer
+    }
+    .addtablesubmit:active{
+    margin-left:-4px;
+    margin-bottom:-4px;
+    padding-top:2px;
+    box-shadow:none
+    }
+
+
+#allCustomerData {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+#allCustomerData td, #allCustomerData th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+#allCustomerData tr:nth-child(even){background-color: #f2f2f2;}
+  
+#allCustomerData tr:hover {background-color: #ddd;}
+  
+#allCustomerData th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color:rgba(97, 186, 235, 0.781);
+    color: black;
+  }
+  .searchsubmit {
+	box-shadow:inset 0px 1px 1px 0px #a6827e;
+	background:linear-gradient(to bottom, #7d5d3b 5%, #634b30 100%);
+	background-color:#7d5d3b;
+	border-radius:9px;
+	border:2px solid #54381e;
+	display:inline-block;
+	cursor:pointer;
+	color:#faf2fa;
+	font-family:Arial;
+	font-size:13px;
+	padding:5px 16px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #4d3534;
+}
+.searchsubmit:hover {
+	background:linear-gradient(to bottom, #634b30 5%, #7d5d3b 100%);
+	background-color:#634b30;
+}
+.searchsubmit:active {
+	position:relative;
+	top:1px;
+}
+#responseheading{
+    text-align: center;
+    background-color: rgba(104, 243, 134, 0.644);
+    color: rgba(7, 7, 7, 0.952);
+}
